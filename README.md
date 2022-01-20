@@ -7,7 +7,7 @@
  ## Commande pour Docker
  docker-compose up -- build
  
- ##EXPLICATIONS
+ ## EXPLICATIONS
  
  J'ai cree un docker file, permettant de faire tourner mon appli en jar
  
@@ -24,4 +24,13 @@
  http://localhost:8090/addUser
  
   
+ ### PROBLEMES
+ 
+ J'ai un petit probleme avec Docker et GIT, quand quelqu'un essaye de lancer mon projet, Git pose probleme surement avec Docker, j'ai entendu parlé d'un gitignore, mais je n'ai pas la solution..
+ 
+ En tout cas, de mon coté, le projet fonctionne..
+ N'hesitez pas à me contacter pour plus d'informations, sur mon adresse mail Universitaire.
+ 
+ 
+ Aurelien Betourne
 
