@@ -1,5 +1,6 @@
 # TP_Docker
- CloudComputing - M2 TNSID - AurelienBetourné
+ CloudComputing - M2 TNSID - AurelienBetourné & SofianeZiane
+ 
  
  ## Commande pour cloner mes sources
  git clone https://github.com/aurelienbtr/TP_Docker.git
