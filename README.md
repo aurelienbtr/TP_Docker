@@ -17,6 +17,8 @@
  
  ## MON APPLI WEB
  
+ C'est simplement une petite application où on peut ajouter des couples de données Integer (un int, et une valeur)
+ 
  ### ACCEUIL
   http://localhost:8090
   
