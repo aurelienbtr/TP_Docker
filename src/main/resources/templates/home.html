@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Docker</title>
+</head>
+<body>
+<h2 class="h2">Liste de donnees persistantes - TP Docker </h2>
+<table>
+  <thead>
+  <tr>
+    <th>Valeur</th>
+    <th> ID </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="cpt: ${compteurs}">
+    <td><span th:text="${cpt.getValeur()}"> Valeur </span></td>
+    <td><span th:text="${cpt.getId()}"> ID </span></td>
+    <form th:action="@{'/remove?id=' + ${cpt.getId()}}"
+          method="POST">
+      <td> <button type="submit" th:text="Supprimer"></button> </td>
+    </form>
+  </tr>
+  </tbody>
+</table>
+
+
+<a href="/addCompteur">
+  <input type="button" value="ADD">
+</a>
+
+</body>
+</html>

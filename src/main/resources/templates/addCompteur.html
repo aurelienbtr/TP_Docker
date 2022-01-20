@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../static/css/proj.css" th:href="@{/css/proj.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="divTable">
+    <fieldset>
+        <form action="/addCompteur" method="post">
+            <label for="id">Id :
+                <input type="text" id="id" name="id" size="30"/>
+            </label><br>
+            <label for="valeur">Valeur :
+                <input type="text" id="valeur" name="valeur" size="30"/>
+            </label><br>
+            <input type="submit" value="Ajouter"/>
+        </form>
+    </fieldset>
+</div>
+</body>
+</html>
