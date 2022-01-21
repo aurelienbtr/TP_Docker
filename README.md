@@ -6,7 +6,7 @@
  git clone https://github.com/aurelienbtr/TP_Docker.git
  
  ## Commande pour Docker
- docker-compose up -- build
+ docker-compose up --build
  
  ## EXPLICATIONS
  

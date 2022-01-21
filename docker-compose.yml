@@ -1,35 +1,36 @@
-version: "3.1"
+version: "3.9"
 services:
   monappjava :
-   image: tpdocker
-   depends_on: 
-    - hsqldb 
-   ports:
-    - "8090:8090" #port de mon appli spring
-   networks:
-    - monreseau
-   environment:
-    SPRING_DATASOURCE_URL: jdbc:hsqldb:hsql:/hsqldb/test
-    SPRING_DATASOURCE_USERNAME: sa
-    SPRING_DATASOURCE_PASSWORD:
+    image: tpdocker
+    build: ./
+    depends_on:
+      - hsqldb
+    ports:
+      - "8090:8090" #port de mon appli spring
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:hsqldb:hsql://hsqldb/test
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=sa
 
   hsqldb:
-   image: blacklabelops/hsqldb #image provenant de docker hub en version 2.3.3
-   ports:
-    - "9001:9001"
-   volumes:
-    - /opt/database
-   networks:
-    - monreseau 
-   environment:
-    - HSQLDB_TRACE=true
-    - HSQLDB_DATABASE_NAME=hsqldb
-    - HSQLDB_SILENT=false
-    - HSQLDB_REMOTE=true
-    - HSQLDB_USER=sa
-    - HSQLDB_PASSWORD=
-    - HSQLDB_DATABASE_HOST=localhost
-    - HSQLDB_DATABASE_ALIAS=test
+    image: blacklabelops/hsqldb:2.3.3 #image provenant de docker hub en version 2.3.3
+    ports:
+      - "9001:9001"
+    volumes:
+      - datadb:/opt/database
+    environment:
+      - HSQLDB_TRACE=true
+      - HSQLDB_DATABASE_NAME=hsqldb
+      - HSQLDB_SILENT=false
+      - HSQLDB_REMOTE=true
+      - HSQLDB_USER=sa
+      - HSQLDB_PASSWORD=sa
+      - HSQLDB_DATABASE_HOST=hsqldb
+      - HSQLDB_DATABASE_ALIAS=test
+
+volumes:
+  datadb:
 
 networks:
-  monreseau: #permet de mettre en reseau Spring et hsqldb
+  default:
+    name: monreseau #permet de mettre en reseau Spring et hsqldb
