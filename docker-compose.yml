@@ -3,33 +3,30 @@ services:
   monappjava :
    image: tpdocker
    depends_on: 
-    - hsqldb 
+    - postgres
    ports:
     - "8090:8090" #port de mon appli spring
    networks:
     - monreseau
    environment:
-    SPRING_DATASOURCE_URL: jdbc:hsqldb:hsql:/hsqldb/test
-    SPRING_DATASOURCE_USERNAME: sa
-    SPRING_DATASOURCE_PASSWORD:
+     SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+     SPRING_DATASOURCE_USERNAME: postgres
+     SPRING_DATASOURCE_PASSWORD: postgres
 
-  hsqldb:
-   image: blacklabelops/hsqldb #image provenant de docker hub en version 2.3.3
+  postgres:
+   image: 'training/postgres' #image provenant de docker hub en version 2.3.3
    ports:
-    - "9001:9001"
+    - "5432:5432"
    volumes:
-    - /opt/database
+     - pgdata:/var/lib/docker/volumes/tp_pgdata/_data
    networks:
     - monreseau 
    environment:
-    - HSQLDB_TRACE=true
-    - HSQLDB_DATABASE_NAME=hsqldb
-    - HSQLDB_SILENT=false
-    - HSQLDB_REMOTE=true
-    - HSQLDB_USER=sa
-    - HSQLDB_PASSWORD=
-    - HSQLDB_DATABASE_HOST=localhost
-    - HSQLDB_DATABASE_ALIAS=test
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+
+volumes:
+  pgdata:
 
 networks:
-  monreseau: #permet de mettre en reseau Spring et hsqldb
+  monreseau: #permet de mettre en reseau Spring et postgres
