@@ -1,32 +1,32 @@
 version: "3.1"
 services:
   monappjava :
-   image: tpdocker
-   depends_on: 
-    - postgres
-   ports:
-    - "8090:8090" #port de mon appli spring
-   networks:
-    - monreseau
-   environment:
-     SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
-     SPRING_DATASOURCE_USERNAME: postgres
-     SPRING_DATASOURCE_PASSWORD: postgres
+    image: tpdocker
+    depends_on:
+      - postgres
+    ports:
+      - "8090:8090" #port de mon appli spring
+    networks:
+      - monreseau
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres #obligation de mettre un mdp pour postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
   postgres:
-   image: 'training/postgres' #image provenant de docker hub en version 2.3.3
-   ports:
-    - "5432:5432"
-   volumes:
-     - pgdata:/var/lib/docker/volumes/tp_pgdata/_data
-   networks:
-    - monreseau 
-   environment:
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: postgres
-
+    image: 'postgres:bullseye' #image provenant de docker hub en version 2.3.3
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      - monreseau
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      #PGDATA: /var/lib/postgresql/data/pgdata
 volumes:
-  pgdata:
-
+  data:
 networks:
   monreseau: #permet de mettre en reseau Spring et postgres
