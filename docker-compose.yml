@@ -15,7 +15,7 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
   postgres:
-    image: 'postgres:bullseye' #image provenant de docker hub en version 2.3.3
+    image: 'postgres:bullseye' #image provenant de docker hub en version bullseye
     ports:
       - "5432:5432"
     volumes:
